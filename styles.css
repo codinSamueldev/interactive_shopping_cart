@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+/* nav-bar styles */
+
+nav *{
+    color: #fff;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(95, 158, 160);
+    box-shadow: 5px 5px rgba(54, 99, 101, 0.5);
+}
+
+nav figure{
+    margin-right: 0.65rem;
+}
+
+nav i{
+    font-size: 1.7rem;
+}
+
+nav figure .cart-amount{
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    padding: 0.1rem;
+    border-radius: 20%;
+    background: rgb(135, 198, 142);
+}
+
+/* End of nav-bar styles. */
+
+section{
+    padding-top: 5rem;
+}
