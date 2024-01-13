@@ -47,9 +47,9 @@ let generateCards = () => {
                 <div class="price">
                     <b class="price-tag">$ ${price}</b>
                     <div class="buttons">
-                        <i onclick="decrementCounter(${id})" class="bi bi-dash-lg"></i>
+                        <i onclick="decrementItem(${id})" class="bi bi-dash-lg"></i>
                         <span id=${id} class="counter">0</span>
-                        <i onclick="incrementCounter(${id})" class="bi bi-plus-lg"></i>
+                        <i onclick="incrementItem(${id})" class="bi bi-plus-lg"></i>
                     </div>
                 </div>
             </header>
@@ -61,7 +61,7 @@ let generateCards = () => {
 generateCards()
 
 
-let incrementCounter = (id) => {
+let incrementItem = (id) => {
 
     let search = basket.find((x) => x.id === id)  // Search if the product id already has values increased.
 
@@ -74,11 +74,37 @@ let incrementCounter = (id) => {
         search.item += 1
     }
 
-    console.log(basket)
+    update(id)  // Update product counter.
 }
 
-let decrementCounter = (id) => {
-    console.log(id)
+let decrementItem = (id) => {
+
+    let search = basket.find((x) => x.id === id)  // Search if the product id already has values increased.
+
+    if (search.item === 0) return  // The return won't allow to keep decreasing items if the item is equals to zero.
+    else {
+        search.item -= 1
+    }
+
+    update(id)  // Update product counter.
 }
 
-let update = () => {}
+let update = (id) => {
+
+    /* Based on the product-id update the counter. */
+
+    let search = basket.find((x) => x.id === id)
+
+    document.getElementById(id).innerHTML = search.item
+
+    cartCalculation()  // Update shopping cart counter.
+}
+
+let cartCalculation = () => {
+    let cartCounter = document.getElementById("cart-amount")
+
+    // console.log(basket, basket.map((x) => x.item).reduce((y,z) => y + z, 0));
+
+    cartCounter.innerHTML = basket.map((x) => x.item).reduce((y,z) => y + z, 0)
+
+}
