@@ -31,11 +31,13 @@ let shopItemsData = [  // Save required information into an object, then with ma
     }
 ]
 
-let basket = []  // Store how many items were added or removed.
+// If we have local data stored retrieve it, if not then initialize an empty array.
+let basket = JSON.parse(localStorage.getItem("data")) || []
 
 let generateCards = () => {
     return (shop.innerHTML = shopItemsData.map((x) => {
         let {id, name, price, description, img} = x  // Destructuring declaration.
+        let search = basket.find((x) => x.id === id) || []
         return `
         <div id="product-id-${id}" class="card">
             <figure>
@@ -48,7 +50,9 @@ let generateCards = () => {
                     <b class="price-tag">$ ${price}</b>
                     <div class="buttons">
                         <i onclick="decrementItem(${id})" class="bi bi-dash-lg"></i>
-                        <span id=${id} class="counter">0</span>
+                        <span id=${id} class="counter">
+                        ${search.item === undefined ? 0: search.item}
+                        </span>
                         <i onclick="incrementItem(${id})" class="bi bi-plus-lg"></i>
                     </div>
                 </div>
@@ -74,6 +78,9 @@ let incrementItem = (id) => {
         search.item += 1
     }
 
+    // Local storage implementation.
+    localStorage.setItem("data", JSON.stringify(basket))
+
     update(id)  // Update product counter.
 }
 
@@ -85,6 +92,9 @@ let decrementItem = (id) => {
     else {
         search.item -= 1
     }
+
+    // Local storage implementation.
+    localStorage.setItem("data", JSON.stringify(basket))
 
     update(id)  // Update product counter.
 }
@@ -108,3 +118,5 @@ let cartCalculation = () => {
     cartCounter.innerHTML = basket.map((x) => x.item).reduce((y,z) => y + z, 0)
 
 }
+
+cartCalculation() // Every time page is reloaded do a quick calculation.
