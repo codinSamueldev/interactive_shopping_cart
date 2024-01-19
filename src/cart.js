@@ -1,5 +1,6 @@
 
 let cartTotal = document.getElementById("cart-total")
+
 let selectedProducts = document.getElementById("selected-products")
 
 let basket = JSON.parse(localStorage.getItem("data")) || []
@@ -20,18 +21,25 @@ let generateCartItems = () => {
         return (selectedProducts.innerHTML = basket.map((y) => {
             let {id, item} = y
             let search = shopItemsData.find((z) => z.id == id)
+            //let find = basket.find((x) => x.id === id)
             return `
-            <figure>
-                <img width="120" src=${search.img}>
-            </figure>
             <div class="cart-items">
+                <img width="130" src=${search.img}>
                 <header class="details">
                     <div class="title-price-cross">
-                        <h3>${search.name}</h3>
-                        <b>$ ${search.price}</b>
+                        <h3 class="title-price">
+                            <p>${search.name}</p>
+                            <p>$ ${search.price}</p>
+                        </h3>
                         <i class="bi bi-x-lg"></i>
                     </div>
-                    <div class="cart-buttons"></div>
+                
+                    <div class="total-items">
+                        <span id=${id} class="counter">
+                            <p>Items: ${item}</p>
+                        </span>
+                    </div>
+                    <h3> $ ${item * search.price}</h3>
                 </header>
             </div>
             `
