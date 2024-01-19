@@ -8,6 +8,10 @@ body{
     font-family: 'Inter', sans-serif;
 }
 
+i{
+    cursor: pointer;
+}
+
 /* nav-bar styles */
 
 nav *{
