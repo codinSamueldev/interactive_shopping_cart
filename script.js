@@ -78,25 +78,28 @@ let incrementItem = (id) => {
         search.item += 1
     }
 
+    update(id)  // Update product counter.
+
     // Local storage implementation.
     localStorage.setItem("data", JSON.stringify(basket))
-
-    update(id)  // Update product counter.
 }
 
 let decrementItem = (id) => {
 
     let search = basket.find((x) => x.id === id)  // Search if the product id already has values increased.
 
-    if (search.item === 0) return  // The return won't allow to keep decreasing items if the item is equals to zero.
+    if (search === undefined) return
+    else if (search.item === 0) return  // The return won't allow to keep decreasing items if the item is equals to zero.
     else {
         search.item -= 1
-    }
+    }    
+
+    update(id)  // Update product counter.
+
+    basket = basket.filter((x) => x.item !== 0) // Prevent local storage stores items with values of zero.
 
     // Local storage implementation.
     localStorage.setItem("data", JSON.stringify(basket))
-
-    update(id)  // Update product counter.
 }
 
 let update = (id) => {
