@@ -12,6 +12,10 @@ i{
     cursor: pointer;
 }
 
+a{
+    text-decoration: none;
+}
+
 /* nav-bar styles */
 
 nav *{
