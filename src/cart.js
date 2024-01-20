@@ -21,10 +21,9 @@ let generateCartItems = () => {
         return (selectedProducts.innerHTML = basket.map((y) => {
             let {id, item} = y
             let search = shopItemsData.find((z) => z.id == id)
-            //let find = basket.find((x) => x.id === id)
             return `
             <div class="cart-items">
-                <img width="130" src=${search.img}>
+                <img width="130" src=${search.img} alt="${search.alt}">
                 <header class="details">
                     <div class="title-price-cross">
                         <h3 class="title-price">
@@ -39,7 +38,7 @@ let generateCartItems = () => {
                             <p>Items: ${item}</p>
                         </span>
                     </div>
-                    <h3> $ ${item * search.price}</h3>
+                    <h3>$ ${item * search.price}</h3>
                 </header>
             </div>
             `
