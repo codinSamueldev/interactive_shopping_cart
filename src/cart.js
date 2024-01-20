@@ -22,7 +22,7 @@ let generateCartItems = () => {
             let {id, item} = y
             let search = shopItemsData.find((z) => z.id == id)
             return `
-            <div class="cart-items">
+            <div id=${search.id} class="cart-items">
                 <img width="130" src=${search.img} alt="${search.alt}">
                 <header class="details">
                     <div class="title-price-cross">
@@ -30,7 +30,7 @@ let generateCartItems = () => {
                             <p>${search.name}</p>
                             <p>$ ${search.price}</p>
                         </h3>
-                        <i class="bi bi-x-lg"></i>
+                        <i onclick="removeProduct(${id})" class="bi bi-x-lg"></i>
                     </div>
                 
                     <div class="total-items">
@@ -55,3 +55,48 @@ let generateCartItems = () => {
 }
 
 generateCartItems()
+
+let removeProduct = (id) => {
+
+    basket = basket.filter((x) => x.id !== id)
+    generateCartItems()
+    localStorage.setItem("data", JSON.stringify(basket))
+    cartCalculation()
+
+    // Convert the id to a string
+    const idToRemove = id.toString()
+
+    // Check if the element exists before trying to remove it
+    const productToRemove = document.getElementById(idToRemove)
+    if (productToRemove) {
+        productToRemove.remove()
+    }
+    totalAmount()
+}
+
+let clearAll = () => {
+    basket = []
+    cartCalculation()
+    localStorage.setItem("data", JSON.stringify(basket))
+    generateCartItems()
+}
+
+let totalAmount = () => {
+    if (basket.length !== 0){
+        let amount = basket.map((x) => {
+            let {item, id} = x
+            let search = shopItemsData.find((y) => y.id === id) || []
+
+            return item * search.price
+        }).reduce((a, b) => a+b, 0)
+
+        cartTotal.innerHTML = `
+        <h2>Total bill: $${amount}<h2>
+        <button class="checkout" type="button">Pay</button>
+        <button onclick="clearAll()" class="remove-all" type="button">Remove all</button>
+        `
+    }
+    else{return}
+}
+
+totalAmount()

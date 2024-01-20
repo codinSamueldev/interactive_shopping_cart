@@ -113,15 +113,23 @@ nav figure .cart-amount{
     font-size: 2rem;
 }
 
-.cart-total .home-btn{
+.cart-total .home-btn, .checkout, .remove-all{
     padding: 0.5rem;
-    margin-top: 0.8rem;
+    margin: 0.8rem 0;
     border-radius: 0.5rem;
     border: none;
     background: rgb(173 61 255);
     color: #fff;
     text-decoration: none;
     cursor: grab;
+}
+
+.checkout{
+    background-color: green;
+}
+
+.remove-all{
+    background-color: red;
 }
 
 /* end of checkout section. */
@@ -169,4 +177,6 @@ nav figure .cart-amount{
     background-color: rgb(255, 145, 145);
     border-radius: 2px;
 }
+
+/* end styles rules when products selected */
 
