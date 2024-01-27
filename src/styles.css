@@ -151,6 +151,7 @@ nav figure .cart-amount{
     grid-template-columns: repeat(1, 430px);
     justify-content: center;
     gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .cart-items{
@@ -192,14 +193,37 @@ nav figure .cart-amount{
 
 
 /* media querys for checkout section. */
-@media (max-width: 1000px) {
-    .selected-products{
-        grid-template-columns: repeat(1, 430px);
-    }
-}
 
 @media (max-width: 500px) {
+    .cart-total {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-top: 5.5rem;
+    }
+
     .selected-products{
-        grid-template-columns: repeat(1, 330px);
+        grid-template-columns: repeat(1, 230px);
+    }
+
+    .cart-items{
+        flex-wrap: wrap;
+    }
+
+    .cart-items img{
+        width: -webkit-fill-available;
+    }
+
+    .title-price-cross{
+        width: fit-content;
+    }
+
+    .title-price{
+        gap: 0.5rem;
+    }
+
+    .title-price-cross i{
+        margin-left: 2.03px;
     }
 }
