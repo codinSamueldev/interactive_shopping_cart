@@ -61,6 +61,10 @@ nav figure .cart-amount{
     padding-top: 5rem;
 }
 
+.card figure img{
+    border-radius: 0.125rem 0.125rem 0 0;
+}
+
 /* End of style cards */
 
 /* media querys for responsive design. */
