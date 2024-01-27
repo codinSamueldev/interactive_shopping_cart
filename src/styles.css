@@ -193,7 +193,7 @@ nav figure .cart-amount{
 
 /* media querys for checkout section. */
 @media (max-width: 1000px) {
-    .cards{
+    .selected-products{
         grid-template-columns: repeat(1, 430px);
     }
 }
