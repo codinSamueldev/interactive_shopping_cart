@@ -190,3 +190,16 @@ nav figure .cart-amount{
 
 /* end styles rules when products selected */
 
+
+/* media querys for checkout section. */
+@media (max-width: 1000px) {
+    .cards{
+        grid-template-columns: repeat(1, 430px);
+    }
+}
+
+@media (max-width: 500px) {
+    .selected-products{
+        grid-template-columns: repeat(1, 330px);
+    }
+}
