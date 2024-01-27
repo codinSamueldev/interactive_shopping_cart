@@ -59,31 +59,17 @@ nav figure .cart-amount{
     justify-content: center;
     gap: 1.5rem;
     padding-top: 5rem;
-}
-
-.card figure img{
-    border-radius: 0.125rem 0.125rem 0 0;
-}
-
-/* End of style cards */
-
-/* media querys for responsive design. */
-@media (max-width: 1000px) {
-    .cards{
-        grid-template-columns: repeat(2, 223px);
-    }
-}
-
-@media (max-width: 500px) {
-    .cards{
-        grid-template-columns: repeat(1, 223px);
-    }
+    margin-bottom: 1.5rem;
 }
 
 .card{
     border: 2px solid #000;
     border-radius: 5px;
     box-shadow: 9px 9px rgba(235, 5, 255, 0.5);
+}
+
+.card figure img{
+    border-radius: 0.125rem 0.125rem 0 0;
 }
 
 .card .card-details{
@@ -96,12 +82,32 @@ nav figure .cart-amount{
     margin: 0.4rem;
 }
 
+.card .price b{
+    font-size: 1.2rem;
+}
+
 .card .price .buttons{
     display: flex;
     justify-content: end;
     font-size: 1.1rem;
     gap: 0.8rem;
 }
+
+/* End of style cards */
+
+/* media querys for home page. */
+@media (max-width: 1000px) {
+    .cards{
+        grid-template-columns: repeat(2, 223px);
+    }
+}
+
+@media (max-width: 500px) {
+    .cards{
+        grid-template-columns: repeat(1, 223px);
+    }
+}
+
 /* end of media-querys. */
 
 /* style checkout section when no products were selected. */
