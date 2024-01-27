@@ -10,7 +10,7 @@ let generateCards = () => {
         return `
         <div id="product-id-${id}" class="card">
             <figure>
-                <img width="220" src=${img} alt="${alt}">
+                <img width="220" src=${img} alt="${alt}" loading="lazy">
             </figure>
             <header class="card-details">
                 <h3>${name}</h3>
